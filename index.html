@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RVC101 ROV Tournament Bracket Management System</title>
+  <title>RVC101 ROV Tournament Bracket Management System By KruTarn</title>
   <script src="/_sdk/data_sdk.js"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -443,7 +443,7 @@
  <body>
   <div class="app-container">
    <div class="header">
-    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System By KruTarn</h1>
+    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System </h1>
     <p id="organizer-name">ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับครบ 20 อันดับ</p>
    </div>
    <div class="main-content">
@@ -470,7 +470,7 @@
      <div class="alert alert-info" id="bracket-info">
       คลิกที่ชื่อทีมเพื่อเลือกผู้ชนะในแต่ละคู่การแข่งขัน
      </div>
-     <div class="button-group" style="margin-bottom: 20px;"><button class="btn btn-secondary" id="edit-mode-btn">✏️ เปิดโหมดแก้ไขสาย</button> <button class="btn btn-success" id="export-image-btn">📸 ดาวน์โหลดสายการแข่งขันเป็นภาพ</button>
+     <div class="button-group" style="margin-bottom: 20px;"><button class="btn btn-secondary" id="edit-mode-btn">✏️ เปิดโหมดแก้ไขสาย</button> <button class="btn btn-success" id="export-image-btn">📸 ดาว���์โหลดสายการแข่งขันเป็นภาพ</button>
      </div>
      <div class="bracket-container">
       <div class="bracket" id="main-bracket"></div>
@@ -485,10 +485,13 @@
      <div class="stats-grid" id="stats-grid"></div>
     </div>
    </div>
+   <div style="text-align: center; color: white; padding: 20px; margin-top: 20px; opacity: 0.9;">
+    <p style="font-size: 1em; margin: 0; font-weight: 500;">พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด</p>
+   </div>
   </div>
   <script>
     const defaultConfig = {
-      tournament_title: "RVC101 ROV Tournament Bracket Management System",
+      tournament_title: "RVC101 ROV Tournament Bracket Management System By KruTarn",
       organizer_name: "ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับครบ 20 อันดับ",
       primary_color: "#7e22ce",
       secondary_color: "#1e3c72",
@@ -502,7 +505,7 @@
     let currentRecords = [];
     let isEditMode = false;
     
-    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่องไหน
+    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่วงไหน
     const ROUTING = {
       // Preliminary Round winners → Round of 16
       'PRELIM-1': { winner: { target: 'R16-1', slot: 'team1' }, loser: { target: 'P17-18', slot: 'team1' } },
@@ -537,7 +540,7 @@
       'P9-16-4': { winner: { target: 'P13-14', slot: 'team2' }, loser: { target: 'P15-16', slot: 'team2' } }
     };
     
-    // สร้าง input สำหรับกรอกชื่อทีม
+    // สร้าง input สำ��รับกรอกชื่อทีม
     function initTeamInputs() {
       const container = document.getElementById('team-inputs');
       container.innerHTML = '';
@@ -583,7 +586,7 @@
       
       matchesMap.clear();
       
-      // สร้าง Preliminary Round (4 คู่)
+      // สร้���ง Preliminary Round (4 คู่)
       for (let i = 0; i < 4; i++) {
         matchesMap.set(`PRELIM-${i + 1}`, {
           match_id: `PRELIM-${i + 1}`,
@@ -596,7 +599,7 @@
       }
       
       // สร้าง Round of 16 (8 คู่)
-      // คู่ที่ 1-2: รอผู้ชนะ Preliminary
+      // ค���่ที่ 1-2: รอผู้ชน�� Preliminary
       matchesMap.set('R16-1', { match_id: 'R16-1', round: 'round16', team1: '', team2: '', winner: '', match_number: 1 });
       matchesMap.set('R16-2', { match_id: 'R16-2', round: 'round16', team1: '', team2: '', winner: '', match_number: 2 });
       
@@ -624,7 +627,7 @@
         });
       }
       
-      // สร้าง Semifinals (2 คู่)
+      // สร้า��� Semifinals (2 คู่)
       for (let i = 1; i <= 2; i++) {
         matchesMap.set(`SF-${i}`, {
           match_id: `SF-${i}`,
@@ -679,10 +682,10 @@
       if (isEditMode) {
         btn.textContent = '✅ ออกจากโหมดแก้ไข';
         btn.className = 'btn btn-success';
-        info.textContent = '🔧 โหมดแก้ไข: คลิกที่ชื่อทีมเพื่อเปลี่ยนชื่อ';
+        info.textContent = '🔧 โหมดแก้ไข: ���ลิกที่ชื่อทีมเพื่อเปลี่ยนชื่อ';
         info.className = 'alert alert-warning';
       } else {
-        btn.textContent = '✏️ เปิดโหมดแก้ไขสาย';
+        btn.textContent = '��️ เปิด��หมดแก้ไขสาย';
         btn.className = 'btn btn-secondary';
         info.textContent = 'คลิกที่ชื่อทีมเพื่อเลือกผู้ชนะในแต่ละคู่การแข่งขัน';
         info.className = 'alert alert-info';
@@ -692,7 +695,7 @@
       updatePlacementBrackets();
     }
     
-    // แก้ไขชื่อทีม
+    // แก้ไข��ื่อทีม
     function editTeamName(matchId, slot) {
       const match = matchesMap.get(matchId);
       if (!match) return;
@@ -708,7 +711,7 @@
           <input type="text" id="edit-team-input" value="${currentName}" style="width:100%;padding:12px;border:2px solid #7e22ce;border-radius:8px;font-size:1em;margin-bottom:20px;">
           <div style="display:flex;gap:10px;justify-content:center;">
             <button id="confirm-edit" style="background:#10b981;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">บันทึก</button>
-            <button id="cancel-edit" style="background:#6b7280;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ยกเลิก</button>
+            <button id="cancel-edit" style="background:#6b7280;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ยก��ลิก</button>
           </div>
         </div>
       `;
@@ -726,7 +729,7 @@
           const oldName = match[slot];
           match[slot] = newName;
           
-          // อัพเดทชื่อทีมในทุกแมตช์ที่มีชื่อเดิม
+          // ��ั��เ��ทชื่อทีมในทุกแมตช์ที่��ี��ื่อเดิม
           matchesMap.forEach(m => {
             if (m.team1 === oldName) m.team1 = newName;
             if (m.team2 === oldName) m.team2 = newName;
@@ -923,7 +926,7 @@
               team1Div.style.cursor = 'pointer';
             }
           } else {
-            team1Div.textContent = 'รอผลการแข่งขัน';
+            team1Div.textContent = 'รอผลการแข�����ขัน';
             team1Div.classList.add('empty');
           }
           matchDiv.appendChild(team1Div);
@@ -984,7 +987,7 @@
       return rankings.sort((a, b) => a.position - b.position);
     }
     
-    // อัพเดทอันดับสุดท้าย
+    // อ���พเด���อันดับสุดท้าย
     function updateFinalRankings() {
       const container = document.getElementById('final-rankings-grid');
       container.innerHTML = '';
@@ -1105,7 +1108,7 @@
       
       const footer = document.createElement('div');
       footer.style.cssText = 'text-align:center;color:white;margin-top:20px;padding:15px;font-size:0.9em;opacity:0.8;font-family:\'Kanit\',\'Sarabun\',sans-serif;';
-  footer.textContent = `พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')} ${new Date().toLocaleTimeString('th-TH')} `;     
+      footer.textContent = พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')} ${new Date().toLocaleTimeString('th-TH')} ;
       captureArea.appendChild(footer);
       
       document.body.appendChild(captureArea);
@@ -1143,7 +1146,7 @@
         
         const errorModal = document.createElement('div');
         errorModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;';
-        errorModal.innerHTML = '<div style="background:white;padding:30px;border-radius:15px;max-width:400px;text-align:center;"><p style="font-size:1.2em;color:#dc2626;font-weight:600;margin-bottom:15px;">⚠️ เกิดข้อผิดพลาดในการสร้างภาพ</p><button onclick="this.parentElement.parentElement.remove()" style="background:#7e22ce;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ตกลง</button></div>';
+        errorModal.innerHTML = '<div style="background:white;padding:30px;border-radius:15px;max-width:400px;text-align:center;"><p style="font-size:1.2em;color:#dc2626;font-weight:600;margin-bottom:15px;">��️ เกิดข้อผิดพลาดในการสร้างภาพ</p><button onclick="this.parentElement.parentElement.remove()" style="background:#7e22ce;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ตกลง</button></div>';
         document.body.appendChild(errorModal);
       } finally {
         document.body.removeChild(captureArea);
@@ -1170,7 +1173,7 @@
       
       const saveBtn = document.getElementById('save-results-btn');
       saveBtn.disabled = true;
-      saveBtn.textContent = '⏳ กำลังบันทึก...';
+      saveBtn.textContent = '�� กำลังบันทึก...';
       
       for (const record of currentRecords) {
         await window.dataSdk.delete(record);
@@ -1199,11 +1202,11 @@
       }, 2000);
     }
     
-    // ��ีเซ็ต
+    // รีเซ็ต
     async function resetAll() {
       const customModal = document.createElement('div');
       customModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;';
-      customModal.innerHTML = '<div style="background:white;padding:30px;border-radius:15px;max-width:400px;text-align:center;"><p style="font-size:1.2em;color:#dc2626;font-weight:600;margin-bottom:20px;">⚠️ คุณต้องการรีเซ็ตข้อมูลทั้งหมดใช่หรือไม่?</p><div style="display:flex;gap:10px;justify-content:center;"><button id="confirm-reset" style="background:#dc2626;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">รีเซ็ต</button><button id="cancel-reset" style="background:#6b7280;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ยกเลิก</button></div></div>';
+      customModal.innerHTML = '<div style="background:white;padding:30px;border-radius:15px;max-width:400px;text-align:center;"><p style="font-size:1.2em;color:#dc2626;font-weight:600;margin-bottom:20px;">⚠️ คุณต้องการรีเซ็ตข้อมูลทั้ง��มดใช่หรือไม่?</p><div style="display:flex;gap:10px;justify-content:center;"><button id="confirm-reset" style="background:#dc2626;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">รีเซ็ต</button><button id="cancel-reset" style="background:#6b7280;color:white;padding:10px 30px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:600;">ยกเลิก</button></div></div>';
       document.body.appendChild(customModal);
       
       document.getElementById('cancel-reset').onclick = () => customModal.remove();
@@ -1342,5 +1345,5 @@
     
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae9bb68f24b45b2',t:'MTc2NTg0MTQ2MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ae9da9866354b58',t:'MTc2NTg0MjczOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
