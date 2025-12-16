@@ -443,12 +443,12 @@
  <body>
   <div class="app-container">
    <div class="header">
-    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System </h1>
-    <p id="organizer-name">ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับครบ 20 อันดับ</p>
+    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System By KruTarn</h1>
+    <p id="organizer-name">ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับ��รบ 20 อันดับ</p>
    </div>
    <div class="main-content">
     <div class="section" id="team-input-section">
-     <h2 class="section-title">📝 กรอกชื่อทีมเข้าร่วมการแข่งขัน (20 ทีม)</h2>
+     <h2 class="section-title">📝 กรอกชื่อทีมเข้าร่วมก��รแข่งขัน (20 ทีม)</h2>
      <div class="team-input-grid" id="team-inputs"></div>
      <div class="button-group"><button class="btn btn-primary" id="draw-btn">🎲 จับสลากและสร้างสายการแข่งขัน</button> <button class="btn btn-secondary" id="reset-btn">🔄 รีเซ็ตทั้งหมด</button>
      </div>
@@ -505,7 +505,7 @@
     let currentRecords = [];
     let isEditMode = false;
     
-    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่วงไหน
+    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่��งไหน
     const ROUTING = {
       // Preliminary Round winners → Round of 16
       'PRELIM-1': { winner: { target: 'R16-1', slot: 'team1' }, loser: { target: 'P17-18', slot: 'team1' } },
@@ -958,7 +958,7 @@
       });
     }
     
-    // คำนวณอันดับสุดท้าย
+    // คำนวณอันดับสุ��ท้าย
     function calculateFinalRankings() {
       const rankings = [];
       
@@ -987,7 +987,7 @@
       return rankings.sort((a, b) => a.position - b.position);
     }
     
-    // อ���พเด���อันดับสุดท้าย
+    // อ���พเด���อ���นดับสุดท้าย
     function updateFinalRankings() {
       const container = document.getElementById('final-rankings-grid');
       container.innerHTML = '';
@@ -1016,7 +1016,7 @@
       }
     }
     
-    // อัพเดทสถิติ
+    // อัพเดทสถิ���ิ
     function updateStats() {
       const container = document.getElementById('stats-grid');
       
@@ -1049,7 +1049,7 @@
     async function exportToImage() {
       const exportBtn = document.getElementById('export-image-btn');
       exportBtn.disabled = true;
-      exportBtn.textContent = '⏳ กำลังสร้างภาพ...';
+      exportBtn.textContent = '⏳ กำลังสร้��งภาพ...';
       
       const captureArea = document.createElement('div');
       captureArea.style.cssText = 'position:absolute;left:-9999px;top:0;background:linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);padding:40px;border-radius:20px;';
@@ -1108,7 +1108,7 @@
       
       const footer = document.createElement('div');
       footer.style.cssText = 'text-align:center;color:white;margin-top:20px;padding:15px;font-size:0.9em;opacity:0.8;font-family:\'Kanit\',\'Sarabun\',sans-serif;';
-      footer.textContent = พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')} ${new Date().toLocaleTimeString('th-TH')} ;
+      footer.textContent = `พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')}`;
       captureArea.appendChild(footer);
       
       document.body.appendChild(captureArea);
@@ -1198,11 +1198,11 @@
       saveBtn.textContent = '✅ บันทึกสำเร็จ';
       
       setTimeout(() => {
-        saveBtn.textContent = '💾 บันทึกผลการแข่งขัน';
+        saveBtn.textContent = '💾 บันทึกผลการแข่ง��ัน';
       }, 2000);
     }
     
-    // รีเซ็ต
+    // ��ีเซ็ต
     async function resetAll() {
       const customModal = document.createElement('div');
       customModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;';
