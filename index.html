@@ -1049,7 +1049,7 @@
     async function exportToImage() {
       const exportBtn = document.getElementById('export-image-btn');
       exportBtn.disabled = true;
-      exportBtn.textContent = '⏳ กำลังสร้��งภาพ...';
+      exportBtn.textContent = '⏳ กำลังสร้างภาพ...';
       
       const captureArea = document.createElement('div');
       captureArea.style.cssText = 'position:absolute;left:-9999px;top:0;background:linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);padding:40px;border-radius:20px;';
@@ -1108,7 +1108,10 @@
       
       const footer = document.createElement('div');
       footer.style.cssText = 'text-align:center;color:white;margin-top:20px;padding:15px;font-size:0.9em;opacity:0.8;font-family:\'Kanit\',\'Sarabun\',sans-serif;';
-      footer.textContent = `พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')}`;
+      footer.textContent = `พัฒนาระบบโดย ครูตาล แผนกเทคโนโลยีสารสนเทศ วิทยาลัยอาชีวศึกษาร้อยเอ็ด | ${new Date().toLocaleDateString('th-TH')} ${new Date().toLocaleTimeString('th-TH')}`;
+
+
+    
       captureArea.appendChild(footer);
       
       document.body.appendChild(captureArea);
