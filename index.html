@@ -443,12 +443,12 @@
  <body>
   <div class="app-container">
    <div class="header">
-    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System By KruTarn</h1>
-    <p id="organizer-name">ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับ��รบ 20 อันดับ</p>
+    <h1 id="tournament-title">RVC101 ROV Tournament Bracket Management System </h1>
+    <p id="organizer-name">ระบบจัดสายการแข่งขันแบบแพ้คัดออก พร้อมสายจัดอันดับครบ 20 อันดับ</p>
    </div>
    <div class="main-content">
     <div class="section" id="team-input-section">
-     <h2 class="section-title">📝 กรอกชื่อทีมเข้าร่วมก��รแข่งขัน (20 ทีม)</h2>
+     <h2 class="section-title">📝 กรอกชื่อทีมเข้าร่วมการแข่งขัน (20 ทีม)</h2>
      <div class="team-input-grid" id="team-inputs"></div>
      <div class="button-group"><button class="btn btn-primary" id="draw-btn">🎲 จับสลากและสร้างสายการแข่งขัน</button> <button class="btn btn-secondary" id="reset-btn">🔄 รีเซ็ตทั้งหมด</button>
      </div>
@@ -505,7 +505,7 @@
     let currentRecords = [];
     let isEditMode = false;
     
-    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่��งไหน
+    // Routing Table - กำหนดว่าผู้ชนะ/แพ้ ไปแมตช์ไหน ช่องไหน
     const ROUTING = {
       // Preliminary Round winners → Round of 16
       'PRELIM-1': { winner: { target: 'R16-1', slot: 'team1' }, loser: { target: 'P17-18', slot: 'team1' } },
@@ -540,7 +540,7 @@
       'P9-16-4': { winner: { target: 'P13-14', slot: 'team2' }, loser: { target: 'P15-16', slot: 'team2' } }
     };
     
-    // สร้าง input สำ��รับกรอกชื่อทีม
+    // สร้าง input สำหรับกรอกชื่อทีม
     function initTeamInputs() {
       const container = document.getElementById('team-inputs');
       container.innerHTML = '';
@@ -586,7 +586,7 @@
       
       matchesMap.clear();
       
-      // สร้���ง Preliminary Round (4 คู่)
+      // สร้าง Preliminary Round (4 คู่)
       for (let i = 0; i < 4; i++) {
         matchesMap.set(`PRELIM-${i + 1}`, {
           match_id: `PRELIM-${i + 1}`,
@@ -599,7 +599,7 @@
       }
       
       // สร้าง Round of 16 (8 คู่)
-      // ค���่ที่ 1-2: รอผู้ชน�� Preliminary
+      // คู่ที่ 1-2: รอผู้ชนะ Preliminary
       matchesMap.set('R16-1', { match_id: 'R16-1', round: 'round16', team1: '', team2: '', winner: '', match_number: 1 });
       matchesMap.set('R16-2', { match_id: 'R16-2', round: 'round16', team1: '', team2: '', winner: '', match_number: 2 });
       
@@ -627,7 +627,7 @@
         });
       }
       
-      // สร้า��� Semifinals (2 คู่)
+      // สร้าง Semifinals (2 คู่)
       for (let i = 1; i <= 2; i++) {
         matchesMap.set(`SF-${i}`, {
           match_id: `SF-${i}`,
@@ -673,7 +673,7 @@
       document.getElementById('final-rankings-section').style.display = 'block';
     }
     
-    // สลับโหมดแ��้ไข
+    // สลับโหมดแก้ไข
     function toggleEditMode() {
       isEditMode = !isEditMode;
       const btn = document.getElementById('edit-mode-btn');
@@ -685,7 +685,7 @@
         info.textContent = '🔧 โหมดแก้ไข: ���ลิกที่ชื่อทีมเพื่อเปลี่ยนชื่อ';
         info.className = 'alert alert-warning';
       } else {
-        btn.textContent = '��️ เปิด��หมดแก้ไขสาย';
+        btn.textContent = ' เปิดโหมดแก้ไขสาย';
         btn.className = 'btn btn-secondary';
         info.textContent = 'คลิกที่ชื่อทีมเพื่อเลือกผู้ชนะในแต่ละคู่การแข่งขัน';
         info.className = 'alert alert-info';
@@ -695,7 +695,7 @@
       updatePlacementBrackets();
     }
     
-    // แก้ไข��ื่อทีม
+    // แก้ไขชื่อทีม
     function editTeamName(matchId, slot) {
       const match = matchesMap.get(matchId);
       if (!match) return;
@@ -749,7 +749,7 @@
       };
     }
     
-    // เลือกผู้ชนะ - ระบบ Routing อัตโ���มัต���
+    // เลือกผู้ชนะ - ระบบ Routing อัตโนมัต
     function selectWinner(matchId, winner) {
       const match = matchesMap.get(matchId);
       if (!match || !match.team1 || !match.team2) return;
@@ -926,7 +926,7 @@
               team1Div.style.cursor = 'pointer';
             }
           } else {
-            team1Div.textContent = 'รอผลการแข�����ขัน';
+            team1Div.textContent = 'รอผลการแข่งขัน';
             team1Div.classList.add('empty');
           }
           matchDiv.appendChild(team1Div);
@@ -958,7 +958,7 @@
       });
     }
     
-    // คำนวณอันดับสุ��ท้าย
+    // คำนวณอันดับสุดท้าย
     function calculateFinalRankings() {
       const rankings = [];
       
@@ -987,7 +987,7 @@
       return rankings.sort((a, b) => a.position - b.position);
     }
     
-    // อ���พเด���อ���นดับสุดท้าย
+    // อัพเดตอันดับสุดท้าย
     function updateFinalRankings() {
       const container = document.getElementById('final-rankings-grid');
       container.innerHTML = '';
@@ -1016,7 +1016,7 @@
       }
     }
     
-    // อัพเดทสถิ���ิ
+    // อัพเดทสถิติ
     function updateStats() {
       const container = document.getElementById('stats-grid');
       
@@ -1173,7 +1173,7 @@
       
       const saveBtn = document.getElementById('save-results-btn');
       saveBtn.disabled = true;
-      saveBtn.textContent = '�� กำลังบันทึก...';
+      saveBtn.textContent = ' กำลังบันทึก...';
       
       for (const record of currentRecords) {
         await window.dataSdk.delete(record);
@@ -1202,7 +1202,7 @@
       }, 2000);
     }
     
-    // ��ีเซ็ต
+    // รีเซ็ต
     async function resetAll() {
       const customModal = document.createElement('div');
       customModal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;';
